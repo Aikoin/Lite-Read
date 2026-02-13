@@ -31,6 +31,11 @@ if (typeof window.liteReadVersion === 'undefined' || window.liteReadVersion < LI
       };
   }
 
+  // WeakMap to store original text for Pangu reversibility
+  if (typeof window.liteReadOriginalTextMap === 'undefined') {
+      window.liteReadOriginalTextMap = new WeakMap();
+  }
+
   // Pangu logic: Apply spacing (Keep existing logic)
   function applyPangu() {
       if (typeof pangu === 'undefined' && typeof window.pangu === 'undefined') {
@@ -64,17 +69,42 @@ if (typeof window.liteReadVersion === 'undefined' || window.liteReadVersion < LI
       }
 
       nodesToUpdate.forEach(node => {
-          // For Pangu reversibility, we use a separate mechanism or just keep it simple (not reversible perfectly without reload)
-          // But user asked for reversibility before. We can reuse the WeakMap approach for text content if needed.
-          // For now focusing on style logic fix.
           const originalText = node.nodeValue;
           const newText = panguLib.spacing(originalText);
+          
           if (originalText !== newText) {
+              // Store original if not already stored
+              if (!window.liteReadOriginalTextMap.has(node)) {
+                  window.liteReadOriginalTextMap.set(node, originalText);
+              }
               node.nodeValue = newText;
           }
       });
       
       window.liteReadPanguApplied = true;
+  }
+
+  // Pangu logic: Revert spacing
+  function revertPangu() {
+      const walker = document.createTreeWalker(
+          document.body,
+          NodeFilter.SHOW_TEXT,
+          null
+      );
+
+      let currentNode;
+      while (currentNode = walker.nextNode()) {
+          if (window.liteReadOriginalTextMap.has(currentNode)) {
+              const originalText = window.liteReadOriginalTextMap.get(currentNode);
+              if (currentNode.nodeValue !== originalText) {
+                  currentNode.nodeValue = originalText;
+              }
+              // Optional: Clear map entry? Better keep it in case user toggles again
+              // window.liteReadOriginalTextMap.delete(currentNode);
+          }
+      }
+      
+      window.liteReadPanguApplied = false;
   }
 
   // Helper to get numeric value from px string
@@ -258,9 +288,9 @@ if (typeof window.liteReadVersion === 'undefined' || window.liteReadVersion < LI
         root.setAttribute('data-lite-read-pangu', String(panguStatus));
         if (panguStatus === true && !window.liteReadPanguApplied) {
             applyPangu();
-        } 
-        // Revert pangu is hard without reload or complex DOM tracking, 
-        // for this version we focus on style fix first.
+        } else if (panguStatus === false && window.liteReadPanguApplied) {
+            revertPangu();
+        }
     }
 
     if (isDefault) {
