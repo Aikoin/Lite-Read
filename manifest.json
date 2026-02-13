@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Lite Read - 纯净阅读助手",
+  "version": "1.0.1",
+  "description": "为 ADHD 及阅读障碍人群设计的网页阅读增强工具。支持动态调整字号、行间距、字间距，提供“盘古之白”中英自动空格功能。作者：Aikoin",
+  "author": "Aikoin",
+  "permissions": ["activeTab", "scripting", "storage"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    }
+  },
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["pangu.min.js", "content.js"],
+      "all_frames": true
+    }
+  ]
+}

@@ -1,0 +1,224 @@
+:root {
+  --primary-color: #007AFF; /* Apple Blue */
+  --success-color: #34C759; /* Apple Green */
+  --danger-color: #FF3B30;  /* Apple Red */
+  --bg-color: #F2F2F7;      /* iOS System Gray 6 */
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --text-primary: #1C1C1E;
+  --text-secondary: #8E8E93;
+  --btn-secondary-bg: #E5E5EA; /* iOS System Gray 5 */
+  --radius: 16px;
+}
+
+body {
+  width: 260px; /* Even smaller width */
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+.glass-panel {
+  padding: 16px; /* Reduced padding */
+  background: var(--bg-color);
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Reduced gap */
+}
+
+.control-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Reduced gap */
+  background: white;
+  padding: 10px 14px; /* Reduced padding */
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.value-display {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+.slider-wrapper {
+  height: 20px;
+  display: flex;
+  align-items: center;
+}
+
+/* Custom Range Slider Styling */
+input[type=range] {
+  -webkit-appearance: none;
+  width: 100%;
+  background: transparent;
+  margin: 0;
+  cursor: pointer;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+/* Track */
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  /* Dynamic gradient background will be set via JS: var(--track-bg) */
+  background: #E5E5EA; /* Fallback */
+  background-image: linear-gradient(var(--success-color), var(--success-color));
+  background-size: var(--percent, 0%) 100%;
+  background-repeat: no-repeat;
+}
+
+/* Thumb */
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  margin-top: -7px; /* (track-height / 2) - (thumb-height / 2) */
+  transition: transform 0.1s;
+}
+
+input[type=range]:active::-webkit-slider-thumb {
+  transform: scale(1.1);
+}
+
+.divider {
+  height: 1px;
+  background-color: #E5E5EA;
+  margin: 5px 0;
+}
+
+.toggle-row {
+  margin-top: 5px;
+}
+
+.sub-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* Toggle Switch Styling */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 24px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #E5E5EA;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: .4s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+input:checked + .slider {
+  background-color: var(--success-color);
+}
+
+input:checked + .slider:before {
+  transform: translateX(16px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.actions-grid {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* Equal width */
+  gap: 10px;
+}
+
+.btn {
+  border: none;
+  padding: 10px 0;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+/* Secondary Destructive Style (Reset) */
+.btn-secondary-destructive {
+  background-color: var(--btn-secondary-bg);
+  color: var(--danger-color);
+}
+
+.btn-secondary-destructive:hover {
+  background-color: #D1D1D6;
+}
+
+/* Secondary Primary Style (Save) */
+.btn-secondary-primary {
+  background-color: var(--btn-secondary-bg);
+  color: var(--primary-color);
+}
+
+.btn-secondary-primary:hover {
+  background-color: #D1D1D6;
+}
+
+/* Primary Solid Style (Apply) */
+.btn-primary-solid {
+  background-color: var(--success-color); /* Apply is usually the main action */
+  color: white;
+}
+
+.btn-primary-solid:hover {
+  background-color: #2DA84A;
+}

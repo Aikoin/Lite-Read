@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lite Read</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="glass-panel">
+    <div class="controls">
+      <!-- Font Size -->
+      <div class="control-item">
+        <div class="label-row">
+          <label>字号</label>
+          <span id="fontSizeVal" class="value-display">默认</span>
+        </div>
+        <div class="slider-wrapper">
+          <input type="range" id="fontSize" min="-5" max="10" step="1" value="0">
+        </div>
+      </div>
+
+      <!-- Line Height -->
+      <div class="control-item">
+        <div class="label-row">
+          <label>行间距</label>
+          <span id="lineHeightVal" class="value-display">默认</span>
+        </div>
+        <div class="slider-wrapper">
+          <input type="range" id="lineHeight" min="-10" max="20" step="1" value="0">
+        </div>
+      </div>
+      
+      <!-- Letter Spacing -->
+      <div class="control-item">
+        <div class="label-row">
+          <label>字间距</label>
+          <span id="letterSpacingVal" class="value-display">默认</span>
+        </div>
+        <div class="slider-wrapper">
+          <input type="range" id="letterSpacing" min="0" max="2" step="0.1" value="0">
+        </div>
+        
+        <div class="divider"></div>
+
+        <!-- Pangu Toggle -->
+        <div class="label-row toggle-row">
+            <label for="panguToggle" class="sub-label">盘古之白</label>
+            <label class="switch">
+                <input type="checkbox" id="panguToggle">
+                <span class="slider round"></span>
+            </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions-grid">
+      <button id="resetBtn" class="btn btn-secondary-destructive">重置</button>
+      <button id="savePresetBtn" class="btn btn-secondary-primary">保存</button>
+      <button id="loadPresetBtn" class="btn btn-primary-solid">应用</button>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
