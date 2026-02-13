@@ -24,31 +24,23 @@ Lite Read 是一款专为 ADHD（注意力缺陷多动障碍）人群及希望�
 
 ## 安装说明 (Installation)
 
-由于本插件暂未上架 Chrome 商店，你可以通过以下两种方式安装：
+由于本插件暂未上架 Chrome 商店，请按照以下步骤手动安装：
 
-### 方式一：直接下载安装包（推荐小白用户 ✅）
+### 第一步：获取代码
 
-1.  **下载**：前往 GitHub 仓库的 **[Releases 页面](https://github.com/Aikoin/Lite-Read/releases)**，下载最新版本的 `lite_read_package.zip` 压缩包。
-2.  **解压**：将下载的压缩包解压到一个你容易找到的文件夹（例如桌面）。
-3.  **打开扩展管理**：在 Chrome 浏览器地址栏输入 `chrome://extensions/` 并回车。
-4.  **开启开发者模式**：点击页面右上角的 **“开发者模式” (Developer mode)** 开关将其打开。
-5.  **加载插件**：点击左上角的 **“加载已解压的扩展程序” (Load unpacked)** 按钮。
-6.  **选择文件夹**：选择你刚才解压出来的文件夹。
-7.  **完成**：Lite Read 图标出现在浏览器右上角，即可开始使用！
+你可以选择以下任意一种方式获取代码：
 
-### 方式二：通过 Git 克隆（适合开发者 💻）
+*   **方式 A（推荐）**：前往 GitHub 仓库页面，点击绿色的 **"Code"** 按钮，选择 **"Download ZIP"**，下载后解压。
+*   **方式 B（Release）**：前往 **[Releases 页面](https://github.com/Aikoin/Lite-Read/releases)** 下载最新版本的压缩包并解压。
+*   **方式 C（Git）**：使用命令 `git clone https://github.com/Aikoin/Lite-Read.git`。
 
-如果你熟悉 Git，可以直接克隆仓库代码使用：
+### 第二步：加载插件
 
-1.  **克隆仓库**：
-    ```bash
-    git clone https://github.com/Aikoin/Lite-Read.git
-    ```
-2.  **加载插件**：
-    *   打开 Chrome 扩展管理页 `chrome://extensions/`
-    *   开启“开发者模式”
-    *   点击“加载已解压的扩展程序”
-    *   选择克隆下来的 `Lite-Read` 文件夹即可。
+1.  **打开扩展管理**：在 Chrome 浏览器地址栏输入 `chrome://extensions/` 并回车。
+2.  **开启开发者模式**：点击页面右上角的 **“开发者模式” (Developer mode)** 开关将其打开。
+3.  **加载插件**：点击左上角的 **“加载已解压的扩展程序” (Load unpacked)** 按钮。
+4.  **选择文件夹**：选择你刚才解压（或 Clone）得到的文件夹。
+5.  **完成**：Lite Read 图标出现在浏览器右上角，即可开始使用！
 
 ## 使用指南 (Usage)
 
